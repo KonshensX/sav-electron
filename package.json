@@ -1,0 +1,16 @@
+{
+  "name": "sav-electron",
+  "version": "1.0.0",
+  "description": "Just a random application to practice some Electron and stuff .",
+  "main": "main.js",
+  "dependencies": {
+    "electron-prebuilt": "^1.4.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "electron ."
+  },
+  "author": "",
+  "license": "ISC"
+}
