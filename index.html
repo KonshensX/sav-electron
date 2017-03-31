@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="public/css/font-awesome.min.css" />
     <title>Hello World!</title>
   </head>
-  <body ng-app="myApp" ng-init="baza='11'">
+  <body ng-app="myApp" ng-init="">
   <div class="ui menu">
     <div class="header item">Brand</div>
     <a class="active item">Link</a>
@@ -36,6 +36,8 @@
       <a class="item">Link</a>
     </div>
   </div>
+
+  <!-- This is the main content everything, all above is the main -->
   <div class="ui container" ng-controller="searchController">
     <div class="ui right" >
       <div class="ui action left icon input">
@@ -45,19 +47,24 @@
         <button class="ui teal button" type="button" name="button" ng-click="add()">
         Add
       </button>
+      <button class="ui button" ng-click="getData()">Get posts</button>
       </div>
-      <h2 class="text">
-        {{ input }}
-      </h2>
+      
+
       <table class="ui inverted right aligned table">
         <thead>
         <tr><th class="left aligned">Person</th>
           <th>Age</th>
         </tr></thead>
         <tbody>
+        <tr ng-show="loading">
+            <div class="ui basic">
+                <div class="ui loader" ng-class="{ 'active': loading }"></div>
+            </div>
+        </tr>
         <tr ng-repeat="item in values">
-          <td class="left aligned">{{item.name}}</td>
-          <td>{{ item.age }}</td>
+          <td class="left aligned">{{item.title}}</td>
+          <td>{{ item.userId }}</td>
         </tr>
         </tbody>
       </table>
@@ -68,5 +75,6 @@
   <script type="text/javascript" src="public/js/semantic.min.js"></script>
   <script type="text/javascript" src="public/js/angular.min.js"></script>
   <script type="text/javascript" src="angular/app.js"></script>
+  <script type="text/javascript" src="server/app.js"></script>
   </body>
 </html>
