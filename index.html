@@ -2,12 +2,71 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <!-- Loading the stylesheets -->
+    <link rel="stylesheet" href="public/css/semantic.min.css" />
+    <link rel="stylesheet" href="public/css/font-awesome.min.css" />
     <title>Hello World!</title>
   </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+  <body ng-app="myApp" ng-init="baza='11'">
+  <div class="ui menu">
+    <div class="header item">Brand</div>
+    <a class="active item">Link</a>
+    <a class="item">Link</a>
+    <div class="ui dropdown item" tabindex="0">
+      Dropdown
+      <i class="dropdown icon"></i>
+      <div class="menu" tabindex="-1">
+        <div class="item">Action</div>
+        <div class="item">Another Action</div>
+        <div class="item">Something else here</div>
+        <div class="divider"></div>
+        <div class="item">Separated Link</div>
+        <div class="divider"></div>
+        <div class="item">One more separated link</div>
+      </div>
+    </div>
+    <div class="right menu">
+      <div class="item">
+        <div class="ui action left icon input">
+          <i class="fa fa-search icon"></i>
+          <input type="text" placeholder="Search">
+          <button class="ui button"><i class="fa"></i> Submit</button>
+        </div>
+      </div>
+      <a class="item">Link</a>
+    </div>
+  </div>
+  <div class="ui container" ng-controller="searchController">
+    <div class="ui right" >
+      <div class="ui action left icon input">
+        <i class="search icon"></i>
+        <input type="text" ng-model="person.name"/>
+        <input type="text" ng-model="person.age" />
+        <button class="ui teal button" type="button" name="button" ng-click="add()">
+        Add
+      </button>
+      </div>
+      <h2 class="text">
+        {{ input }}
+      </h2>
+      <table class="ui inverted right aligned table">
+        <thead>
+        <tr><th class="left aligned">Person</th>
+          <th>Age</th>
+        </tr></thead>
+        <tbody>
+        <tr ng-repeat="item in values">
+          <td class="left aligned">{{item.name}}</td>
+          <td>{{ item.age }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Loading the scripts -->
+  <script type="text/javascript" src="public/js/semantic.min.js"></script>
+  <script type="text/javascript" src="public/js/angular.min.js"></script>
+  <script type="text/javascript" src="angular/app.js"></script>
   </body>
 </html>
