@@ -1,3 +1,13 @@
+/*
+let app = require('http')
+
+const server = app.createServer((request, response) => {
+	console.log("what")
+})
+
+server.listen(8080)
+
+
 var mysql = require('mysql')
 
 var connection = mysql.createConnection({
@@ -13,3 +23,4 @@ connection.query('SElECT * FROM posts', function (error, results, fields) {
     if (error) throw error
     	
 })
+*/

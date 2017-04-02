@@ -6,9 +6,10 @@ app.controller ('searchController', function ($scope, $http, $interval) {
 
     $scope.values = $http({
         method: 'GET',
-        url: 'https://jsonplaceholder.typicode.com/posts'
+        url: 'http://localhost:8080'
       }).then((response) => {
-        $interval(function () {
+        setTimeout(function () {
+          console.log(response.data)
           $scope.values = response.data
           $scope.loading = false
         }, 2000)
@@ -24,8 +25,9 @@ app.controller ('searchController', function ($scope, $http, $interval) {
     $scope.getData = function () {
       $http({
         method: 'GET',
-        url: 'https://jsonplaceholder.typicode.com/posts'
+        url: 'http:// localhost:8080'
       }).then((response) => {
+        console.log(response.data)
         $scope.values = response.data
       })
     }
