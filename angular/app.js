@@ -1,4 +1,16 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngRoute']);
+
+app.config(function ($routeProvider) {
+    $routeProvider
+      .when('/posts', {
+        controller: 'PostsController',
+        templateUrl: 'partials/posts.html'
+      })
+      .when('/', {
+        tempalteUrl: 'partials/index.html'
+      })
+      .otherwise({redirectTo: '/'})
+})
 
 app.controller ('searchController', function ($scope, $http, $interval) {
 
