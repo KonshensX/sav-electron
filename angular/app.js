@@ -6,7 +6,7 @@ app.controller ('searchController', function ($scope, $http, $interval) {
 
     $scope.values = $http({
         method: 'GET',
-        url: 'http://localhost:8080'
+        url: 'http://localhost:8080/posts'
       }).then((response) => {
         setTimeout(function () {
           console.log(response.data)

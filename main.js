@@ -16,31 +16,9 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
-
-  //Launch the node listener along with the electron app
-  let app = require('http')
-  let mysql = require('mysql')
-  const server = app.createServer((request, response) => {
-
-    var connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'zendone'
-    })
-
-    connection.connect()
-
-    connection.query('SElECT * FROM posts', function (error, results, fields) {
-        if (error) throw error
-        response.statusCode = 200
-        response.write(results)
-    })
-    
-    response.end()
-  })
-
-  server.listen(8080)
+  
+  //Node js server is going to run here
+  let server = require('./main.js')
 
   // Open the DevTools.
   win.webContents.openDevTools();
