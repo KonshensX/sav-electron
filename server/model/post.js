@@ -1,21 +1,20 @@
-let mysql = require('mysql')
+let mysql = require('mysql');
 
 var connection = mysql.createConnection({
-    host: 'localhost',
+    host: '127.0.0.1',
     user: 'root',
     password: '',
     database: 'zendone'
-})
+});
+
+connection.connect();
 
 module.exports.getPosts = function () {
-    connection.connect()
-    data = null
     connection.query('SElECT * FROM posts', function (error, results, fields) {
         if (error) {
-            console.log(error)
+            console.log(error);
         }
-        data = (JSON.stringify(results))
-    })
-    connection.end()
-    return data
-}
+        return JSON.stringify(results);
+    });
+};
+
