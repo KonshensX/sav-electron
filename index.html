@@ -9,8 +9,11 @@
   </head>
   <body ng-app="myApp" ng-init="">
   <div class="ui menu">
-    <div class="header item">My App</div>
-    <a class="active item">Real</a>
+    <div class="header item">
+      <a href="#/">My App</a>
+    </div>
+    <a href="#/posts" class="active item">Posts</a>
+    <a href="#/addPost" class="item">Add post</a>
     <div class="ui dropdown item" tabindex="0">
       Posts
       <i class="dropdown icon"></i>
@@ -25,10 +28,12 @@
 
   <!-- This is the main content everything, all above is the main -->
   <div class="ui container">
+    <a href="#/posts">Posts</a>
     <div ng-view></div>
   </div>
 
   <!-- Loading the scripts -->
+  <script type="text/javascript" src="public/js/jquery.min.js"></script>
   <script type="text/javascript" src="public/js/semantic.min.js"></script>
   <script type="text/javascript" src="public/js/angular.min.js"></script>
   <script type="text/javascript" src="public/js/angular-route.min.js"></script>

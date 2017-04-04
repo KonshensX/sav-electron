@@ -2,13 +2,8 @@
 let express = require('express')
 let expressApp = express()
 let mysql = require('mysql')
+let post = require('./model/post')
 
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'zendone'
-})
 
 /**
 * Routes are going to be here
@@ -24,21 +19,12 @@ expressApp.get('/', function (request, response) {
 })
 
 expressApp.get('/posts', function (request, response) {
-
-	console.log(request)
-	connection.connect()
-
-	connection.query('SElECT * FROM posts', function (error, results, fields) {
-	    if (error) throw error
-    	response.setHeader('Content-Type', 'application/json')
-	    response.send(JSON.stringify(results))
-	})
-	connection.end()
+	console.log(post.getPosts())
 })
 
 
 
-//Server stuff 
-var server = expressApp.listen(8080, function () {
-	console.log('This server is running on post 8080')
+//Server stuff
+var server = expressApp.listen(2020, function () {
+	console.log('This server is running on post 2020')
 })

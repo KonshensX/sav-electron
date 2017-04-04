@@ -2,45 +2,46 @@ var app = angular.module('myApp', ['ngRoute']);
 
 app.config(function ($routeProvider) {
     $routeProvider
-      .when('/posts', {
-        controller: 'PostsController',
-        templateUrl: 'partials/posts.html'
-      })
       .when('/', {
-        tempalteUrl: 'partials/index.html'
+        controller: 'PostController',
+        templateUrl: 'views/posts.html'
+      })
+      .when('/posts', {
+        controller: 'PostController',
+        template: '<h1>Work u goddamn piece of code</h1>'
+      })
+      .when('/addPost', {
+        tempalteUrl: 'views/addPost.html'
       })
       .otherwise({redirectTo: '/'})
-})
+});
 
-app.controller ('searchController', function ($scope, $http, $interval) {
+
+
+
+app.controller ('PostController', function ($scope, $http, $interval) {
 
     $scope.loading = true
 
-    $scope.values = $http({
+    $scope.posts = $http({
         method: 'GET',
-        url: 'http://localhost:8080/posts'
-      }).then((response) => {
+        url: 'http://localhost:2020/posts'
+      })
+      .then((response) => {
         setTimeout(function () {
           console.log(response.data)
           $scope.values = response.data
           $scope.loading = false
-        }, 2000)
+        }, 1000)
       })
-
-    $scope.add = function () {
-        $scope.values.push({
-          name: $scope.person.name,
-          age: $scope.person.age
-         });
-    }
 
     $scope.getData = function () {
       $http({
         method: 'GET',
-        url: 'http:// localhost:8080'
+        url: 'http:// localhost:2020/posts'
       }).then((response) => {
         console.log(response.data)
-        $scope.values = response.data
+        $scope.posts = response.data
       })
     }
 });

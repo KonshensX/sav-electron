@@ -16,9 +16,9 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
-  
+
   //Node js server is going to run here
-  let server = require('./main.js')
+  let server = require('./server/app.js')
 
   // Open the DevTools.
   win.webContents.openDevTools();
