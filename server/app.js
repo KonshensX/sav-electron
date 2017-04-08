@@ -11,8 +11,10 @@ expressApp.get('/', function (request, response) {
 });
 
 expressApp.get('/posts', function (request, response) {
-    console.log(post.testcase());
-	console.error('Data : ');
+    post.getPosts(function (response) {
+
+    });
+
 });
 
 

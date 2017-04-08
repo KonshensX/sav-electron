@@ -9,12 +9,12 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-module.exports.getPosts = function () {
+module.exports.getPosts = function (callback) {
     connection.query('SElECT * FROM posts', function (error, results, fields) {
         if (error) {
             console.log(error);
         }
-        return JSON.stringify(results);
+        callback(results);
     });
 };
 
