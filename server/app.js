@@ -10,11 +10,12 @@ expressApp.get('/', function (request, response) {
 
 });
 
-expressApp.get('/posts', function (request, response) {
-    post.getPosts(function (response) {
+expressApp.get('/posts', function (request, response, callback) {
 
+    let posts = post.getPosts(function (response) {
+        callback(JSON.stringify(response));
     });
-
+    response.json(posts);
 });
 
 

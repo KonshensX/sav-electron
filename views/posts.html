@@ -1,4 +1,5 @@
-<button class="ui button" ng-click="getData()">Get data</button>
+{{ posts }}
+<button ng-click="getposts()"></button>
 <div class="ui three card">
   <div class="ui card" ng-repat="post in posts">
     <div class="image dimmable">
@@ -9,7 +10,7 @@
           </div>
         </div>
       </div>
-      <img src="./image.png">
+      <img src="{{ post.fuck }}">
     </div>
     <div class="content">
       <div class="header">Title</div>

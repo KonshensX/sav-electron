@@ -21,27 +21,23 @@ app.config(function ($routeProvider) {
 
 app.controller ('PostController', function ($scope, $http, $interval) {
 
-    $scope.loading = true
+    $scope.loading = true;
 
-    $scope.posts = $http({
-        method: 'GET',
-        url: 'http://localhost:2020/posts'
-      })
-      .then((response) => {
-        setTimeout(function () {
-          console.log(response.data)
-          $scope.values = response.data
-          $scope.loading = false
-        }, 1000)
-      })
+    $scope.posts = [];
 
-    $scope.getData = function () {
-      $http({
-        method: 'GET',
-        url: 'http:// localhost:2020/posts'
-      }).then((response) => {
-        console.log(response.data)
-        $scope.posts = response.data
-      })
+    $scope.getposts = function () {
+
+        $http({
+            method: 'GET',
+            url: 'http://localhost:2020/posts'
+        })
+        .then((response) => {
+            console.log(response.data);
+        })
+        .catch(function (erro) {
+            console.error(erro);
+        });
+
     }
+
 });
