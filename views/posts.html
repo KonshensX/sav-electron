@@ -1,7 +1,26 @@
-{{ posts }}
-<button ng-click="getposts()"></button>
-<div class="ui three card">
-  <div class="ui card" ng-repat="post in posts">
+<h2 class="ui center white aligned icon header">
+  <i class="circular fa-user icon"></i>
+  Users
+</h2>
+<form class="ui form" ng-submit="createPost()" method="post">
+  <div class="ui field">
+    <label class="label">
+      Title
+    </label>
+    <input class="input" type="text" placeholder="Title" ng-model="newPost.title">
+    <div class="field">
+      <label class="label">
+      </label>
+      <textarea class="input" placeholder="Whats on your mind, express yourself" rows="4" ng-model="newPost.content"></textarea>
+      <button type="submit" class="ui blue button icon">
+        <i class="add icon"></i>
+         Post
+      </button>
+    </div>
+  </div>
+</form>
+<div class="ui three cards" ng-init="getposts()">
+  <div class="ui card" ng-repeat="post in posts">
     <div class="image dimmable">
       <div class="ui blurring inverted dimmer transition hidden">
         <div class="content">
@@ -10,14 +29,14 @@
           </div>
         </div>
       </div>
-      <img src="{{ post.fuck }}">
+      <img src="">
     </div>
     <div class="content">
-      <div class="header">Title</div>
+      <div class="header">{{ post.title }}</div>
       <div class="meta">
-        <a class="group">Meta</a>
+        <a class="group">{{ post.created_at }}</a>
       </div>
-      <div class="description">One or two sentence description that may go to several lines</div>
+      <div class="description">{{ post.content }}</div>
     </div>
     <div class="extra content">
       <a class="right floated created">Arbitrary</a>

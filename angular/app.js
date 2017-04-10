@@ -13,6 +13,9 @@ app.config(function ($routeProvider) {
       .when('/addPost', {
         tempalteUrl: 'views/addPost.html'
       })
+      .when('/welcome', {
+        templateUrl: 'views/welcome.html'
+      })
       .otherwise({redirectTo: '/'})
 });
 
@@ -32,12 +35,28 @@ app.controller ('PostController', function ($scope, $http, $interval) {
             url: 'http://localhost:2020/posts'
         })
         .then((response) => {
-            console.log(response.data);
+            $scope.posts = response.data;
         })
         .catch(function (erro) {
-            console.error(erro);
+            alert(erro);
         });
 
+    }
+
+    $scope.createPost = function () {
+      $http({
+        method: 'POST',
+        url: 'http://localhost:2020/createpost',
+        data: $scope.newPost
+      })
+      .then(function (response) {
+        if (response.data.message != undefined) {
+          $scope.posts.unshift($scope.newPost);
+        }
+      })
+      .catch(function (error) {
+        alert(error);
+      });
     }
 
 });

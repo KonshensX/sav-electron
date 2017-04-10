@@ -5,12 +5,13 @@
     <!-- Loading the stylesheets -->
     <link rel="stylesheet" href="public/css/semantic.min.css" />
     <link rel="stylesheet" href="public/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="public/css/main.css" />
     <title>Hello World!</title>
   </head>
   <body ng-app="myApp" ng-init="">
   <div class="ui menu">
     <div class="header item">
-      <a href="#/">My App</a>
+      <a href="#/welcome">MyElectronApp</a>
     </div>
     <a href="#/posts" class="active item">Posts</a>
     <a href="#/addPost" class="item">Add post</a>
@@ -37,5 +38,21 @@
   <script type="text/javascript" src="public/js/angular.min.js"></script>
   <script type="text/javascript" src="public/js/angular-route.min.js"></script>
   <script type="text/javascript" src="angular/app.js"></script>
+  <script type="text/javascript">
+        $(document)
+          .ready(function() {
+              $('.ui.dropdown')
+                  .dropdown({
+                      on: 'click'
+                  })
+            ;
+          })
+        ;
+    app.run(function($rootScope) {
+      //jQuery('[ng-app]').on('click', 'a', function() {
+        //  window.location.href = $(this).attr('href');
+      //});
+    });
+  </script>
   </body>
 </html>

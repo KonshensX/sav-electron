@@ -1,6 +1,11 @@
 let express = require('express');
 let expressApp = express();
 let post = require('./model/post');
+var bodyParser = require('body-parser');
+var multer = require('multer'); // v1.0.5
+
+expressApp.use(bodyParser.json()); // for parsing application/json
+expressApp.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 
 /**
@@ -12,12 +17,20 @@ expressApp.get('/', function (request, response) {
 
 expressApp.get('/posts', function (request, response, callback) {
 
-    let posts = post.getPosts(function (response) {
-        callback(JSON.stringify(response));
+    post.getPosts(function (data) {
+		response.json(data);	
     });
-    response.json(posts);
 });
 
+
+expressApp.post('/createpost', function (request, response, callback) {
+
+	post.createPost(request.body, function (data) {
+		response.json(data);
+	});
+
+	
+});
 
 
 
